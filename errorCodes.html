@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Developer Documentation.">
+
+    <title>Licensing</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+
+</head>
+
+<body>
+
+    <div id="layout">
+        <!-- Menu toggle -->
+        <a href="#menu" id="menuLink" class="menu-link">
+            <!-- Hamburger icon -->
+            <span></span>
+        </a>
+
+        <div id="menu">
+            <div class="pure-menu pure-menu-open">
+                <a class="pure-menu-heading" href="#">Student API</a>
+
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="references.html">Reference</a>
+                    </li>
+                    
+                    <li>
+                    	<a href="licensing.html">Licensing</a>
+                    </li>
+                    
+                    <li>
+                    	<a href="errorCodes.html">Error Codes</a>
+                    </li>
+                    
+                    <li>
+                        <a href="getConnected.html">Get connected</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="main">
+            <div class="header">
+                <h1>Error Codes</h1>
+                <h2>HTTP Status codes</h2>
+            </div>
+
+            <div class="content">
+<p><table class="pure-table">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Text</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="pure-table-odd">
+            <td>304</td>
+            <td>Not modified</td>
+            <td>No data has been changed in the request</td>
+        </tr>
+
+        <tr>
+            <td>400</td>
+            <td>Bad request</td>
+            <td>The request entered is not valid. Please try another request.</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td>401</td>
+            <td>Unauthorised</td>
+            <td>Please ensure you have entered the correct authorisation credentials.</td>
+        </tr>
+        
+                <tr>
+            <td>403</td>
+            <td>Forbidden</td>
+            <td>You do not have the rights to carry out this request</td>
+        </tr>
+        
+                <tr class="pure-table-odd">
+            <td>404</td>
+            <td>Not found</td>
+            <td>The data requested does not exist in the database. Make sure you are using the correct URI</td>
+        </tr>
+        
+                        <tr>
+            <td>500</td>
+            <td>Code Error</td>
+            <td>Something has gone wrong with the internal code. Please visit the Twitter page to get help with this.</td>
+        </tr>
+
+    </tbody>
+</table></p>
+    </div>
+
+    <script src="js/ui.js"></script>
+
+</body>
+
+</html>

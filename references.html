@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Developer Documentation.">
+
+    <title>Reference</title>
+
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+
+</head>
+
+<body>
+
+    <div id="layout">
+        <!-- Menu toggle -->
+        <a href="#menu" id="menuLink" class="menu-link">
+            <!-- Hamburger icon -->
+            <span></span>
+        </a>
+
+        <div id="menu">
+            <div class="pure-menu pure-menu-open">
+                <a class="pure-menu-heading" href="#">Student API</a>
+
+                <ul>
+                  <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="references.html">Reference</a>
+                    </li>
+                    
+                    <li>
+                    	<a href="licensing.html">Licensing</a>
+                    </li>
+                                   
+                    <li>
+                    	<a href="errorCodes.html">Error Codes</a>
+                    </li>
+                    
+                    <li>
+                        <a href="getConnected.html">Get connected</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="main">
+            <div class="header">
+                <h1>Reference</h1>
+                <h2>An outline of all API functionality</h2>
+            </div>
+            
+            <div class="content">
+             <h2 class="content-subhead">Resources</h2>
+                <p>
+						There are 3 resources within the API to connect to; student, course and module. These can be all be accessed using an API console as mentioned on the home page. 
+                </p>
+                </div>
+                
+                <div class="content">
+                <h2 class="content-subhead">GET Requests</h2>
+                <p>A GET request will retrieve data from within the database. The request will then return the data in a JSON object. 
+                </p>
+            </div>
+            
+                       <div class="content">
+                <h2 class="content-subhead">PUT Requests</h2>
+                <p>A PUT request can be used to edit current data within the database. The request will find the data from the request and replace it with the data entered into the body of the request.
+                </p>
+                           </div>
+            
+                                 <div class="content">
+                <h2 class="content-subhead">POST Requests</h2>
+                <p>A POST request is used to create new data within the database. This requests more than one piece of information. For example, if a new student was created the request would need to include the student name, course and student number
+                </p>
+                
+            </div>
+            
+                                             <div class="content">
+                <h2 class="content-subhead">DELETE Requests</h2>
+                <p>A DELETE request will delete data from within the database. Using this request you will need to be careful to only delete one data entry and not a whole table. 
+                </p>
+                
+            </div>
+            
+             <div class="content">
+                            <h2 class="content-subhead">Student</h2>
+<table class="pure-table">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="pure-table-odd">
+            <td>studentID</td>
+            <td>int</td>
+            <td>Unique identifier for each student generated every time a new student is added to the database</td>
+        </tr>
+
+        <tr>
+            <td>studentName</td>
+            <td>varchar(50)</td>
+            <td>Full name of the student</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td>studentNumber</td>
+            <td>int</td>
+            <td>Unique student number assigned to each student when they enrol</td>
+        </tr>
+        
+                <tr>
+            <td>course</td>
+            <td>varchar(50)</td>
+            <td>Name of course student is enrolled on</td>
+        </tr>
+
+    </tbody>
+</table>
+            </div>
+            
+                        
+            </div>
+            
+            <div class="content">
+            
+            <h3>GET</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>GET</code></pre></td>
+            <td><pre><code>/student/{studentID}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                      <p>  <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>GET</code></pre></td>
+            <td><pre><code>/student/{studentNumber}</code></pre></td>
+        </tr>
+            </tbody>
+</table></p>
+
+	Data can be retrieved from the student table either by the studentID or the studentNumber as these are both unique numbers. You need to add the appropriate studentID or studentNumber to the URI. The request could be sent using the student name but as multiple students may have the same name this could return multiple pieces of data. In order to return one student a unique field should be used in the request. The responses to these requests will return all of the data within the field as mentioned in the student table above.
+    
+    <h4>Response</h4>
+                         <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+            <td><pre><code>Student: {
+            studentID: "1",
+            firstName: "Sarah",
+            lastName: "Longville",
+            studentNumber: "10316502",
+            course: "Web Applications Development",
+            resource_uri: “http://fostvm.fost.plymouth.ac.uk/Modules/SOFT338/slongville/student/1”
+}
+            </code></pre></td>
+        </tr>
+            </tbody>
+</table>
+    
+<h3>PUT</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>PUT</code></pre></td>
+            <td><pre><code>/student/studentID/{courseName = name}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                      <p>  <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>PUT</code></pre></td>
+            <td><pre><code>/student/studentNumber/{courseName = name}</code></pre></td>
+        </tr>
+            </tbody>
+</table></p>
+
+	Data can be edited from the student table either by the studentID or the studentNumber as these are both unique numbers. You need to add the appropriate studentID or studentNumber into the URI and write the name you want the details to be changed to. In carrying out these requests the information stored for a student will change. The request could be sent to just edit the students name but the students number could be edited too.
+
+<h3>POST</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>POST</code></pre></td>
+            <td><pre><code>/student/{studentName = name}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+	This request will add a new student to the database. In order to do this studentNumber, course and name needs to be specified. The studentID is not needed as this is auto incremented. The response will then return the details of the new student.
+    
+    <h4>Response</h4>
+                          <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+            <td><pre><code>Student: {
+	firstName: “Joanna”,
+	lastName: “Lewis”,
+	studentNumber: “10429839”,
+	course: “Textiles”,
+}
+            </code></pre></td>
+        </tr>
+            </tbody>
+</table>
+    
+    <h3>DELETE</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>DELETE</code></pre></td>
+            <td><pre><code>/student/{studentID}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                       <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>DELETE</code></pre></td>
+            <td><pre><code>/student/studentNumber</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+	These requests will delete a student from the database. In order to do this you will need to use the studentNumber or studentID. If the studentName is used this may delete more than one student so a unique identifier needs to be used. Make sure studentNumber or studentID is specified in the URI or this request will not work. 
+            
+           </div> 
+            
+            
+            <div class="content">
+                            <h2 class="content-subhead">Course</h2>
+            <table class="pure-table">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="pure-table-odd">
+            <td>courseID</td>
+            <td>int</td>
+            <td>Unique identifier for each course generated every time a new course is added to the database</td>
+        </tr>
+
+        <tr>
+            <td>courseName</td>
+            <td>varchar(50)</td>
+            <td>Full name of the course</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td>courseAcronym</td>
+            <td>varchar(50)</td>
+            <td>Acrocym assigned to each course name</td>
+        </tr>
+
+    </tbody>
+</table>
+
+    <h3>GET</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>GET</code></pre></td>
+            <td><pre><code>/course/{courseID}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                     	Data can be retrieved from the courses table by the courseID as this is the unique identifier. You need to add the appropriate courseID to the URI. The responses to these requests will return all of the data within the field as mentioned in the course table above.
+                        
+    <h4>Response</h4>
+                          <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+            <td><pre><code>	Module: {
+	moduleID: “1”,
+	moduleName: “Advanced Web Technologies”,
+	moduleCode: “ISAD334”,
+	resource_uri: “http://fostvm.fost.plymouth.ac.uk/Modules/SOFT338/slongville/module/1”
+}
+            </code></pre></td>
+        </tr>
+            </tbody>
+</table>
+                        
+                            <h3>PUT</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>PUT</code></pre></td>
+            <td><pre><code>/course/courseID/{courseName = name}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+Data can be edited from the course table either by the courseID as this is the unique identifier. You need to add the appropriate courseID into the URI and write the name you want the details to be changed to. In carrying out this request the information stored for a course will change. The request could be sent to just edit the course name but the course acronym could be edited too.
+
+                            <h3>POST</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>POST</code></pre></td>
+            <td><pre><code>/course/{courseName = name}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+This request will add a new course to the database. In order to do this courseName, courseAcronym need to be specified. The courseID is not needed as this is auto incremented. The response will then return the details of the new course.
+
+    <h4>Response</h4>
+                          <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+            <td><pre><code>	Module: {
+	moduleName: “Internet Culture & Psychology”,
+	moduleCode: “ISAD340”
+}
+            </code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+
+  <h3>DELETE</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>DELETE</code></pre></td>
+            <td><pre><code>/course/{courseID}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+These requests will delete a course from the database. In order to do this you will need to use the courseID. Make sure the courseID is specified in the URI or this request will not work.
+            </div>
+                      
+                         <div class="content">
+                            <h2 class="content-subhead">Module</h2>
+            <table class="pure-table">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="pure-table-odd">
+            <td>moduleID</td>
+            <td>int</td>
+            <td>Unique identifier for each module generated every time a new module is added to the database</td>
+        </tr>
+
+        <tr>
+            <td>moduleName</td>
+            <td>varchar(50)</td>
+            <td>Full name of the module</td>
+        </tr>
+
+        <tr class="pure-table-odd">
+            <td>moduleCode</td>
+            <td>int</td>
+            <td>Code assigned to each module</td>
+        </tr>
+
+    </tbody>
+</table>
+
+   <h3>GET</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>GET</code></pre></td>
+            <td><pre><code>/module/{moduleID}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                      <p>  <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>GET</code></pre></td>
+            <td><pre><code>/module/moduleCode</code></pre></td>
+        </tr>
+            </tbody>
+</table></p>
+
+Data can be retrieved from the module table either by the moduleID or the moduleCode as these are the unique identifiers. You need to add the appropriate moduleID or moduleCode to the URI. The responses to these requests will return all of the data within the field as mentioned in the module table above.
+
+    <h4>Response</h4>
+                          <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+            <td><pre><code>	Course: {
+	courseID: “1”,
+	courseName: “Web Applications Development”,
+	courseAcronym: “WAD”,
+	resource_uri: “http://fostvm.fost.plymouth.ac.uk/Modules/SOFT338/slongville/course/1”
+}
+            </code></pre></td>
+        </tr>
+            </tbody>
+</table>
+            
+              <h3>PUT</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>PUT</code></pre></td>
+            <td><pre><code>/module/moduleID/{moduleName = name, moduleCode = code}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                      <p>  <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>PUT</code></pre></td>
+            <td><pre><code>/module/moduleCode/{moduleName = name}</code></pre></td>
+        </tr>
+            </tbody>
+</table></p>
+Data can be edited from the module table either by the moduleID or the moduleCode as these are both unique identifiers. You need to add the appropriate moduleID or moduleCode into the URI and write the name you want the details to be changed to. In carrying out these requests the information stored for a module will change. The request could be sent to just edit the module name but the module code could be edited too.
+
+                            <h3>POST</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>POST</code></pre></td>
+            <td><pre><code>/module/{moduleName = name}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+This request will add a new module to the database. In order to do this moduleName and moduleCode need to be specified. The moduleID is not needed as this is auto incremented. The response will then return the details of the new module.
+
+    <h4>Response</h4>
+                          <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+            <td><pre><code>	Course: {
+	courseName: “Textiles”,
+	courseAcronym: “TEX”,
+}
+            </code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                            <h3>DELETE</h3>
+                        <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>DELETE</code></pre></td>
+            <td><pre><code>/module/{moduleID}</code></pre></td>
+        </tr>
+            </tbody>
+</table>
+
+                      <p>  <table class="pure-table">
+    <thead>
+                    <tr class="pure-table-odd">
+			<td><pre><code>DELETE</code></pre></td>
+            <td><pre><code>/module/moduleID}</code></pre></td>
+        </tr>
+            </tbody>
+</table></p>
+	These requests will delete a module from the database. In order to do this you will need to use the moduleID or moduleCode. Make sure moduleID or moduleCode is specified in the URI or this request will not work. 
+           
+        </div>
+    </div>
+
+    <script src="file:///E|/My Documents/Uni/Third Year/SOFT338/Assignment/js/ui.js"></script>
+
+</body>
+
+</html>
